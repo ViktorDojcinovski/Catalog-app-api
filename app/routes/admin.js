@@ -9,19 +9,19 @@ const adminController = require('../controllers/admin');
 
 const router = express.Router();
 
-// /admin/pages => GET
-router.get('/pages', cors(), adminController.getPages);
+// /admin/catalogues => GET
+router.get('/catalogues', cors(), adminController.getCatalogues);
 
-// /admin/add-page => POST
-router.post('/add-page', cors(), adminController.postAddPage);
+// /admin/add-catalogue => POST
+router.post('/add-catalogue', cors(), adminController.postAddCatalogue);
 
-// /admin/edit-page => GET
-router.get('/edit-page/:pageId', cors(), adminController.getEditPage);
+// /admin/edit-catalogue => GET
+router.get('/edit-catalogue/:catalogueId', cors(), adminController.getEditCatalogue);
 
-// /admin/edit-page => POST
-router.post('/edit-page', cors(), adminController.postEditPage);
+// /admin/edit-catalogue => POST
+router.post('/edit-catalogue', cors(), adminController.postEditCatalogue);
 
-// /admin/delete-page => POST
-router.post('/delete-page', cors(), adminController.postDeletePage);
+// /admin/delete-catalogue => POST
+router.post('/delete-catalogue', cors(), adminController.postDeleteCatalogue);
 
 module.exports = router;

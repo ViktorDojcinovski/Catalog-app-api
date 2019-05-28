@@ -1,73 +1,71 @@
-const Page = require('../models/page');
+const Catalogue = require('../models/catalogue');
 
-exports.postAddPage = (req, res, next) => {
-    const name = req.body.page.name;
-    const page_content = req.body.page.page_content;
-    const html_elements = req.body.page.html_elements;
-    const page = new Page({
-        name: name,
-        page_content: page_content,
-        html_elements: html_elements
+exports.postAddCatalogue = (req, res, next) => {
+  const name = req.body.catalogue.name;
+  const type = req.body.catalogue.type;
+  const images = req.body.catalogue.images;
+  const catalogue = new Catalogue({
+    name: name,
+    type: type,
+    images: images
+  });
+  catalogue
+    .save()
+    .then(result => {
+      res.json(result);
+    })
+    .catch(err => {
+      console.log(err);
     });
-    page
-        .save()
-            .then(result => {
-                res.json(result);
-            })
-            .catch(err => {
-                console.log(err);
-            });
 };
 
-exports.getEditPage = (req, res, next) => {
-    const pageId = req.params.pageId;
-    Page.findById(pageId)
-      .then(page => {
-          res.json(page);
-      })
-      .catch(err => console.log(err));
+exports.getEditCatalogue = (req, res, next) => {
+  const catalogueId = req.params.catalogueId;
+  Catalogue.findById(catalogueId)
+    .then(catalogue => {
+      res.json(catalogue);
+    })
+    .catch(err => console.log(err));
 };
 
-exports.postEditPage = (req, res, next) => {
-    const pageId = req.body.page.pageId;
-    const updatedName = req.body.page.name;
-    const updatedContent = req.body.page.page_content;
-    const updatedElements = req.body.page.html_elements;
+exports.postEditCatalogue = (req, res, next) => {
+  const catalogueId = req.body.catalogue.catalogueId;
+  const updatedName = req.body.catalogue.name;
+  const updatedType = req.body.catalogue.type;
+  const updatedImages = req.body.catalogue.images;
 
-    console.log(pageId);
-
-    Page.findById(pageId)
-        .then(page => {
-            page.name = updatedName;
-            page.page_content = updatedContent;
-            page.html_elements = updatedElements;
-            return page.save();
-        })
-        .then(result => {
-            console.log('UPDATED PAGE!');
-            res.json(result);
-        })
-        .catch(err => console.log(err));
+  Catalogue.findById(catalogueId)
+    .then(catalogue => {
+      catalogue.name = updatedName;
+      catalogue.type = updatedType;
+      catalogue.images = updatedImages;
+      return catalogue.save();
+    })
+    .then(result => {
+      console.log('UPDATED CATALOGUE!');
+      res.json(result);
+    })
+    .catch(err => console.log(err));
 };
 
-exports.getPages = (req, res, next) => {
-    Page.find()
-        .then(pages => {
-            res.json(pages);
-        })
-        .catch(err => {
-            console.log(err)
-        });
+exports.getCatalogues = (req, res, next) => {
+  Catalogue.find()
+    .then(catalogues => {
+      res.json(catalogues);
+    })
+    .catch(err => {
+      console.log(err)
+    });
 };
 
-exports.postDeletePage = (req, res, next) => {
-    const pageId = req.body.pageId;
-    Page.findByIdAndRemove(pageId)
-        .then(() => {
-            Page.find()
-                .then(pages => {
-                    res.json(pages);
-                })
+exports.postDeleteCatalogue = (req, res, next) => {
+  const catalogueId = req.body.catalogueId;
+  Catalogue.findByIdAndRemove(catalogueId)
+    .then(() => {
+      Catalogue.find()
+        .then(catalogues => {
+          res.json(catalogues);
         })
-        .catch(err => console.log(err));
+    })
+    .catch(err => console.log(err));
 };

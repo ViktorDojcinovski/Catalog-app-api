@@ -1,19 +1,16 @@
-require('dotenv').config()
 const request = require('request-promise')
 const btoa = require('btoa')
 
+require('dotenv').config()
+
 const { ISSUER, CLIENT_ID, CLIENT_SECRET, SCOPE } = process.env
 
-const [,, uri, method, body] = process.argv
+const [, , uri, method, body] = process.argv
 if (!uri) {
   console.log('Usage: node client {url} [{method}] [{jsonData}]')
   process.exit(1)
 }
 
-
-/**
- * OAuth2 user for testing purposes
- */
 const sendAPIRequest = async () => {
   const token = btoa(`${CLIENT_ID}:${CLIENT_SECRET}`)
   try {
