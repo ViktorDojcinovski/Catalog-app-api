@@ -1,9 +1,8 @@
 {
   "name": "catalog-app-api",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "build": "webpack -p",
     "test": "standard"
   },
   "dependencies": {
