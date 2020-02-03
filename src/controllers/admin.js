@@ -26,8 +26,6 @@ exports.getCatalogs = (req, res, next) => {
 
   const partnerEmail = req.body.partnerEmail;
 
-  console.log(partnerEmail);
-
   Catalog.find({ partnerEmail: partnerEmail })
     .then(catalogs => {
       res.json(catalogs);
@@ -69,13 +67,15 @@ exports.saveCatalog = async (req, res, next) => {
   // keep up with the synchronious flow of events
 
   try {
+
     //It is a good practice to check if already the folder exists
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir);
     } else {
+      res.status(403);
       return res.json({
         message: 'A catalog with the same name already exists!'
-      })
+      });
     };
 
     if (fs.existsSync(dir)) {
