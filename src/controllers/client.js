@@ -48,7 +48,7 @@ exports.getCatalogsByPartnersEmail = (req, res, next) => {
 };
 
 /** Get all Catalogs where id is the requested id from the MongoDB, 
- * respond to /catalogs/:email => POST REST API endpoint
+ * respond to /catalogs/partner/:id => POST REST API endpoint
  *
  * @returns {json} JSON representation from the Catalogs list
  */

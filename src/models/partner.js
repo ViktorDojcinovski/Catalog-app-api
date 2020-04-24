@@ -1,11 +1,11 @@
 /**
  * Partner mongoose model for CRUD operations on MongoDB database
- * 
+ *
  * Collection --> Partners
  * Document --> Partner
  */
 
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var PartnerSchema = new Schema({
@@ -19,7 +19,10 @@ var PartnerSchema = new Schema({
   twitter: String,
   website: String,
   customAvatar: String,
-  catalogs: [{ type: Schema.Types.ObjectId, ref: 'Catalog' }]
+  catalogs: [{ type: Schema.Types.ObjectId, ref: "Catalog" }],
+  securityCode: String,
+  isEnabled: Boolean,
+  isSuperadmin: Boolean,
 });
 
-module.exports = mongoose.model('Partner', PartnerSchema);
+module.exports = mongoose.model("Partner", PartnerSchema);
