@@ -16,7 +16,7 @@
     "del": "^5.0.0",
     "dotenv": "^6.0.0",
     "epilogue": "^0.7.1",
-    "express": "~4.0.0",
+    "express": "~4.17.3",
     "express-jwt": "^5.3.1",
     "express-jwt-authz": "^1.0.0",
     "inside": "^1.0.0",
