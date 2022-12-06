@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@okta/jwt-verifier": "0.0.12",
-    "body-parser": "~1.0.1",
+    "body-parser": "~1.20.1",
     "bson": "^4.0.1",
     "btoa": "^1.2.1",
     "chmodr": "^1.2.0",
@@ -16,7 +16,7 @@
     "del": "^5.0.0",
     "dotenv": "^6.0.0",
     "epilogue": "^0.7.1",
-    "express": "~4.0.0",
+    "express": "~4.18.2",
     "express-jwt": "^5.3.1",
     "express-jwt-authz": "^1.0.0",
     "inside": "^1.0.0",
